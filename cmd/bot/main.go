@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/zarishsphere/zs-agent-platform-bot/config"
-	"github.com/zarishsphere/zs-agent-platform-bot/internal/platform_bot"
+	"github.com/zarishsphere/zs-ops-github-bot/config"
+	"github.com/zarishsphere/zs-ops-github-bot/internal/platform_bot"
 )
 
 func main() {
