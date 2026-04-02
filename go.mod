@@ -1,4 +1,4 @@
-module github.com/zarishsphere/zs-agent-platform-bot
+module github.com/zarishsphere/zs-ops-github-bot
 
 go 1.26.1
 
