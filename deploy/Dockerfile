@@ -1,10 +1,10 @@
 # Build stage
-FROM golang:1.26-alpine AS builder
+FROM golang:1.21-alpine AS builder
 
 WORKDIR /app
 
 # Install git (needed for go mod download)
-RUN apk add --no-cache git
+RUN apk add --no-cache git ca-certificates
 
 # Copy go mod files
 COPY go.mod go.sum ./
@@ -17,6 +17,32 @@ COPY . .
 
 # Build the binary
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o bot ./cmd/bot
+
+# Final stage
+FROM alpine:3.19
+
+# Install ca-certificates for HTTPS requests
+RUN apk --no-cache add ca-certificates
+
+# Create non-root user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+WORKDIR /app
+
+# Copy binary and certificates from builder
+COPY --from=builder /app/bot .
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# Change ownership and switch to non-root user
+RUN chown -R appuser:appgroup /app
+USER appuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --quiet --tries=1 --spider http://localhost:8080/health || exit 1
+
+# Run the binary
+ENTRYPOINT ["/app/bot"]
 
 # Final stage
 FROM alpine:latest
