@@ -1,0 +1,102 @@
+# ZarishSphere GitHub Bot Configuration
+# This file contains bot behavior configuration
+
+organization: zarishsphere
+
+# Auto-merge settings
+auto_merge:
+  enabled: true
+  trusted_authors:
+    - dependabot[bot]
+    - renovate[bot]
+  require_ci_success: true
+  require_reviews: 1
+
+# RFC state machine settings
+rfc:
+  enabled: true
+  states:
+    - draft
+    - review
+    - accepted
+    - rejected
+    - withdrawn
+
+# Labeling rules (by file path patterns)
+labeling:
+  rules:
+    zs-core-:
+      - core
+      - backend
+    zs-svc-:
+      - service
+      - backend
+    zs-pkg-go-:
+      - package
+      - golang
+      - backend
+    zs-pkg-ui-:
+      - package
+      - frontend
+      - ui
+    zs-ui-:
+      - frontend
+      - ui
+    zs-mobile-:
+      - mobile
+      - flutter
+    zs-desktop-:
+      - desktop
+      - tauri
+    zs-iac-:
+      - infrastructure
+      - terraform
+      - kubernetes
+    zs-data-:
+      - data
+      - terminology
+      - content
+    zs-content-:
+      - content
+      - forms
+      - clinical
+    zs-ops-:
+      - operations
+      - automation
+    zs-agent-:
+      - automation
+      - ai
+    zs-distro-:
+      - distribution
+      - deployment
+    zs-docs-:
+      - documentation
+    zs-int-:
+      - integration
+      - interoperability
+    .github/:
+      - github
+      - automation
+    "*.md":
+      - documentation
+    "*.yml":
+      - ci-cd
+      - automation
+    "*.yaml":
+      - ci-cd
+      - automation
+    go.mod:
+      - golang
+      - dependencies
+    package.json:
+      - javascript
+      - dependencies
+    Dockerfile:
+      - docker
+      - containerization
+
+# Reporting settings
+reporting:
+  stale_pr_threshold_days: 30
+  weekly_report_day: monday
+  health_check_enabled: true

@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/google/go-github/v60/github"
-	"github.com/zarishsphere/zs-agent-platform-bot/config"
+	"github.com/zarishsphere/zs-ops-github-bot/config"
 )
 
 func HandleWebhook(cfg *config.Config) http.HandlerFunc {

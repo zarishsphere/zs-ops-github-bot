@@ -1,0 +1,17 @@
+apiVersion: v2
+name: zs-ops-github-bot
+description: ZarishSphere GitHub Automation Bot
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - github
+  - automation
+  - bot
+  - zarishsphere
+home: https://github.com/zarishsphere/zs-ops-github-bot
+sources:
+  - https://github.com/zarishsphere/zs-ops-github-bot
+maintainers:
+  - name: ZarishSphere Platform Team
+    email: platform@zarishsphere.com
