@@ -46,7 +46,7 @@ jobs:
         with:
           go-version: '1.21'
       - name: Run Gosec Security Scanner
-        uses: securecodewarrior/github-action-gosec@master
+        uses: securecodewarrior/github-action-gosec@e583ad81ce2ef612b06d82378bed2330f2ee7d38
         with:
           args: './...'
 
