@@ -1,6 +1,6 @@
-name: CI — ZarishSphere GitHub Bot
+name: CI - ZarishSphere GitHub Bot
 
-on:
+"on":
   push:
     branches: [main]
   pull_request:
